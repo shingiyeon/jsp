@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;Article_DB_project/src/article&apos;&#x0D;&#x0A;- Original project: &apos;servlet_example2&apos;&#x0D;&#x0A;- Destination element: &apos;Article_DB_project/src/article&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     Article.java&#x0D;&#x0A;     ArticleManagement.java" description="Copy compilation units" destination="=Article_DB_project/src&lt;article" element1="/src&lt;{Article.java" element2="/src&lt;{ArticleManagement.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1558772535961" units="2" version="1.0"/>
+</session>
