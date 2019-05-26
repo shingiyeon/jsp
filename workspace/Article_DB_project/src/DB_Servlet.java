@@ -1,6 +1,9 @@
 
 
 import java.io.IOException;
+
+import javax.naming.NamingException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,7 +38,22 @@ public class DB_Servlet extends HttpServlet {
 		}
 		else if(action.equals("article")) {
 			ArticleDao dao;
+			try {
+				dao = new ArticleDao();
+				dao.getArticles();
+				request.getRequestDispatcher("/");
+				
+			} catch (NamingException e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("aaa", 123);
+			response.sendRedirect("/jsp/index.jsp");
+			// sendRedirect request의 data를 넘길 필요가 없을때
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/index.jsp");
+			dispatcher.forward(request,  response);
+			// dispatcher forward는 data를 넘길 필요가 있을때
 		}
+		
 	}
 
 	/**
