@@ -26,5 +26,6 @@
 	<%
 		}
 	%>
+	<span style="border: black solid 1px;"><a href="/notice/make">notice 작성</a></span>
 </body>
 </html>

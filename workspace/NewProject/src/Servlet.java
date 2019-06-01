@@ -1,4 +1,4 @@
-
+import ContentController.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.*;
+import board.BoardContent;
+import board.BoardDao;
+import board.NoticeContent;
 
 /**
  * Servlet implementation class Servlet
@@ -33,49 +35,43 @@ public class Servlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String action = request.getParameter("to");
+		String uri = request.getRequestURI();
+		String patterns[] = uri.split("/");
+		String pattern = "";
+		if(patterns.length == 0 || patterns.length == 1) {
+			pattern = "home";
+		} else {
+			pattern = patterns[1];
+		}
 		
-		if(action.equals("notice.jsp")) {
-			BoardDao dao;
+		if(pattern.equals("home") || pattern.equals("home.do")) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/home.jsp");
+			dispatcher.forward(request,  response);
+		}else if(pattern.equals("notice")) {
+			NoticeContentController controller = new NoticeContentController();
 			try {
-				dao = new BoardDao();
-				List<NoticeContent> notices = dao.getNotices();
-				request.setAttribute("datas", notices);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/notice.jsp");
-				dispatcher.forward(request,  response);
-				
+				controller.execute(patterns[2], request, response);
 			} catch (NamingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else if(action.equals("board.jsp")) {
-			BoardDao dao;
+		}else if(pattern.equals("board")) {
+			BoardContentController controller = new BoardContentController();
 			try {
-				dao = new BoardDao();
-				List<BoardContent> boards = dao.getBoards();
-				request.setAttribute("datas", boards);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/board.jsp");
-				dispatcher.forward(request,  response);
-				
+				controller.execute(patterns[2], request, response);
 			} catch (NamingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
-		}else if(action.equals("QnA.jsp")){
-			BoardDao dao;
+		}else if(pattern.equals("QnA")){
+			QnAContentController controller = new QnAContentController();
 			try {
-				dao = new BoardDao();
-				List<QnAContent> qnas = dao.getQnAs();
-				request.setAttribute("datas", qnas);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/QnA.jsp");
-				dispatcher.forward(request,  response);
-				
+				controller.execute(patterns[2], request, response);
 			} catch (NamingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 		}
 		
 	}

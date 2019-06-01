@@ -9,5 +9,7 @@ C:\work\sgy\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\8962
 \servlet_project\src
 C:\work\sgy\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\974019691.index
 \NewProject\src
+C:\work\sgy\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2006854244.index
+\NewProject\src
 C:\work\sgy\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2376171921.index
 \servlet_example2\src

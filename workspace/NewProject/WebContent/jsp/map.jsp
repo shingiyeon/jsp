@@ -26,10 +26,11 @@
 </head>
 <body>
 	<ul>
-		<li><a href="/NewProject/jsp/home.jsp">메인으로 가기</a></li>
-		<li><a href="http://localhost:8090/NewProject?to=notice.jsp">공지사항</a></li>
-		<li><a href="http://localhost:8090/NewProject?to=board.jsp">자유게시판</a></li>
-		<li><a href="http://localhost:8090/NewProject?to=QnA.jsp">질문과 답변</a></li>
+		<li><a href="/home">메인으로 가기</a></li>
+		<li><a href="/notice/list">공지사항</a></li>
+		<li><a href="/board/list">자유게시판</a></li>
+		<li><a href="/QnA/list">질문과 답변</a></li>
+		<li><a href="/jsp/temp.jsp">임시</a></li>
 	</ul>
 </body>
 </html>
