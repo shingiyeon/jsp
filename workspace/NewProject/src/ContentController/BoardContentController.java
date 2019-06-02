@@ -29,8 +29,18 @@ public class BoardContentController {
 			}
 		}else if(pattern.equals("make")) {
 			request.setAttribute("where", "Board");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/MakeContent.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/MakeContentFolder/MakeContent.jsp");
 			dispatcher.forward(request, response);
+		}else if(pattern.equals("MakeComplete")) {
+			BoardDao dao;
+			dao = new BoardDao();
+			BoardContent board = new BoardContent();
+			board.setTitle(request.getParameter("title"));
+			board.setBody(request.getParameter("body"));
+			board.setWriter(request.getParameter("writer"));
+			dao.putBoard(board);
+			response.sendRedirect("/board/list");
+			
 		}
 	}
 }

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.BoardContent;
 import board.BoardDao;
+import board.NoticeContent;
 import board.QnAContent;
 
 public class QnAContentController {
@@ -30,8 +31,18 @@ public class QnAContentController {
 			}
 		}else if(pattern.equals("make")) {
 			request.setAttribute("where", "QnA");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/MakeContent.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/MakeContentFolder/MakeContent.jsp");
 			dispatcher.forward(request, response);
+		}else if(pattern.equals("MakeComplete")) {
+			BoardDao dao;
+			dao = new BoardDao();
+			QnAContent qna = new QnAContent();
+			qna.setTitle(request.getParameter("title"));
+			qna.setBody(request.getParameter("body"));
+			qna.setWriter(request.getParameter("writer"));
+			dao.putQnA(qna);
+			response.sendRedirect("/QnA/list");
+			
 		}
 	}
 }

@@ -16,7 +16,6 @@ import board.NoticeContent;
 public class NoticeContentController {
 	public void execute(String pattern, HttpServletRequest request, HttpServletResponse response) throws NamingException, ServletException, IOException {
 		if(pattern.equals("list")) {
-			System.out.println("join notice.do");
 			BoardDao dao;
 			try {
 				dao = new BoardDao();
@@ -31,8 +30,18 @@ public class NoticeContentController {
 			}
 		}else if(pattern.equals("make")) {
 			request.setAttribute("where", "Notice");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/MakeContent.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/MakeContentFolder/MakeContent.jsp");
 			dispatcher.forward(request, response);
+		}else if(pattern.equals("MakeComplete")) {
+			BoardDao dao;
+			dao = new BoardDao();
+			NoticeContent notice = new NoticeContent();
+			notice.setTitle(request.getParameter("title"));
+			notice.setBody(request.getParameter("body"));
+			notice.setWriter(request.getParameter("writer"));
+			dao.putNotice(notice);
+			response.sendRedirect("/notice/list");
+			
 		}
 	}
 }

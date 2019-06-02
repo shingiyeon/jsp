@@ -32,6 +32,7 @@ public class BoardDao {
 		SqlSession session = sqlsessionFactory.openSession();
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		List<BoardContent> boards = mapper.selectBoards();
+		session.close();
 		return boards;
 	}
 	
@@ -39,6 +40,7 @@ public class BoardDao {
 		SqlSession session = sqlsessionFactory.openSession();
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		List<NoticeContent> notices = mapper.selectNotices();
+		session.close();
 		return notices;
 	}
 	
@@ -46,6 +48,7 @@ public class BoardDao {
 		SqlSession session = sqlsessionFactory.openSession();
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		List<QnAContent> QnAs = mapper.selectQnAs();
+		session.close();
 		return QnAs;
 	}
 	
@@ -53,17 +56,23 @@ public class BoardDao {
 		SqlSession session = sqlsessionFactory.openSession();
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		mapper.InsertBoard_tb(board);
+		session.commit();
+		session.close();
 	}
 	
 	public void putNotice(NoticeContent notice) {
 		SqlSession session = sqlsessionFactory.openSession();
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		mapper.InsertNotice_tb(notice);
+		session.commit();
+		session.close();
 	}
 	
 	public void putQnA(QnAContent qna) {
 		SqlSession session = sqlsessionFactory.openSession();
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		mapper.InsertQnA_tb(qna);
+		session.commit();
+		session.close();
 	}
 }
