@@ -1,9 +1,9 @@
-package com.example.board.controller;
+package com.example.demo.board.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.board.model.ArticleDao;
+import com.example.demo.board.model.ArticleDao;
 
 @Controller
 public class BoardController {
